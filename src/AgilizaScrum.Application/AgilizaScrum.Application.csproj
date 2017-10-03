@@ -199,11 +199,13 @@
     <Compile Include="Configuration\IConfigurationAppService.cs" />
     <Compile Include="Configuration\Ui\UiThemeInfo.cs" />
     <Compile Include="Configuration\Ui\UiThemes.cs" />
+    <Compile Include="DtoMappings.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\EditTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\TenantDto.cs" />
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\TenantAppService.cs" />
+    <Compile Include="ProductBacklog\Dtos\ProductBackDto.cs" />
     <Compile Include="ProductBacklog\IProductBackAppService.cs" />
     <Compile Include="ProductBacklog\ProductBackAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,7 +240,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ProductBacklog\Dtos\" />
     <Folder Include="SprintBacklog\Dtos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

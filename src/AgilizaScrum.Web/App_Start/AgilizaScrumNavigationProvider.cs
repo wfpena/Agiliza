@@ -47,6 +47,14 @@ namespace AgilizaScrum.Web
                         icon: "fa fa-tag",
                         requiredPermissionName: PermissionNames.Pages_Roles
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        "Products",
+                        new LocalizableString("ProductBacklog", AgilizaScrumConsts.LocalizationSourceName),
+                        url: "#products",
+                        icon: "fa fa-tag"
+                        //requiredPermissionName: PermissionNames.Pages_Roles
+                    )
                 )
                 .AddItem(
                     new MenuItemDefinition(

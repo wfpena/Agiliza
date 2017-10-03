@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using AgilizaScrum.ProductBacklog.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,7 @@ namespace AgilizaScrum.ProductBacklog
 {
     public interface IProductBackAppService : IApplicationService
     {
+        List<ProductBackDto> GetAll();
+        void CreateProduct(ProductBackDto input);
     }
 }

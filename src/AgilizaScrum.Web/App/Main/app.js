@@ -56,6 +56,11 @@
                     templateUrl: '/App/Main/views/home/home.cshtml',
                     menu: 'Home' //Matches to name of 'Home' menu in AgilizaScrumNavigationProvider
                 })
+                .state('products', {
+                    url: '/products',
+                    templateUrl: '/App/Main/views/products/index.cshtml',
+                    menu: 'Products' //Matches to name of 'ProductBacklog' menu in AgilizaScrumNavigationProvider
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',

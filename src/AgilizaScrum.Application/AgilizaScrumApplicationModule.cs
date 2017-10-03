@@ -9,6 +9,8 @@ using AgilizaScrum.Authorization.Roles;
 using AgilizaScrum.Authorization.Users;
 using AgilizaScrum.Roles.Dto;
 using AgilizaScrum.Users.Dto;
+using AgilizaScrum.ProductBacklog.Dtos;
+using AgilizaScrum.ProductBacklog;
 
 namespace AgilizaScrum
 {
@@ -22,6 +24,12 @@ namespace AgilizaScrum
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(mapper =>
+            {
+                DtoMappings.Map(mapper);
+            });
+
 
             // TODO: Is there somewhere else to store these, with the dto classes
             Configuration.Modules.AbpAutoMapper().Configurators.Add(cfg =>
@@ -38,6 +46,8 @@ namespace AgilizaScrum
 
                 cfg.CreateMap<CreateUserDto, User>();
                 cfg.CreateMap<CreateUserDto, User>().ForMember(x => x.Roles, opt => opt.Ignore());
+
+                
             });
         }
     }

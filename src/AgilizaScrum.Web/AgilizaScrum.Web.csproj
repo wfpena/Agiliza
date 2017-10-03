@@ -465,6 +465,9 @@
     <Content Include="App\Main\views\layout\sidebar-nav.js" />
     <Content Include="App\Main\views\layout\sidebar-user-area.js" />
     <Content Include="App\Main\views\layout\topbar.js" />
+    <Content Include="App\Main\views\products\createModal.js" />
+    <Content Include="App\Main\views\products\editModal.js" />
+    <Content Include="App\Main\views\products\index.js" />
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
     <Content Include="App\Main\views\roles\index.js" />
@@ -2865,6 +2868,9 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css.map" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="App\Main\views\products\createModal.cshtml" />
+    <Content Include="App\Main\views\products\editModal.cshtml" />
+    <Content Include="App\Main\views\products\index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -3792,7 +3798,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Main\views\product\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
