@@ -3,12 +3,18 @@ using Abp.Zero.EntityFramework;
 using AgilizaScrum.Authorization.Roles;
 using AgilizaScrum.Authorization.Users;
 using AgilizaScrum.MultiTenancy;
+using AgilizaScrum.ProductBacklog;
+using System.Data.Entity;
+using AgilizaScrum.SprintBacklog;
 
 namespace AgilizaScrum.EntityFramework
 {
     public class AgilizaScrumDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        public virtual IDbSet<ProductBack> ProductBacklogs { get; set; }
+        public virtual IDbSet<Sprint> Sprints { get; set; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -42,6 +48,16 @@ namespace AgilizaScrum.EntityFramework
          : base(existingConnection, contextOwnsConnection)
         {
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Sprint>()
+                   .HasRequired(i => i.ParentProductBack)
+                   .WithMany(i => i.Sprints)
+                   .HasForeignKey(i => i.ProductBackId);
         }
     }
 }
