@@ -12,7 +12,7 @@ namespace AgilizaScrum.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "AgilizaScrum";
         }
 

@@ -6,6 +6,8 @@ using AgilizaScrum.MultiTenancy;
 using AgilizaScrum.ProductBacklog;
 using System.Data.Entity;
 using AgilizaScrum.SprintBacklog;
+using AgilizaScrum.ReleaseBacklog;
+using AgilizaScrum.UserStories;
 
 namespace AgilizaScrum.EntityFramework
 {
@@ -13,7 +15,9 @@ namespace AgilizaScrum.EntityFramework
     {
         //TODO: Define an IDbSet for your Entities...
         public virtual IDbSet<ProductBack> ProductBacklogs { get; set; }
+        public virtual IDbSet<ReleaseBack> ReleaseBacklogs { get; set; }
         public virtual IDbSet<Sprint> Sprints { get; set; }
+        public virtual IDbSet<UserStory> UserStories { get; set; }
 
 
         /* NOTE: 
@@ -54,10 +58,15 @@ namespace AgilizaScrum.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<ReleaseBack>()
+                  .HasRequired(i => i.ParentProductBack)
+                  .WithMany(i => i.Releases)
+                  .HasForeignKey(i => i.ProductBackId);
+
             modelBuilder.Entity<Sprint>()
-                   .HasRequired(i => i.ParentProductBack)
+                   .HasRequired(i => i.ParentReleaseBack)
                    .WithMany(i => i.Sprints)
-                   .HasForeignKey(i => i.ProductBackId);
+                   .HasForeignKey(i => i.ReleaseBackId);
         }
     }
 }

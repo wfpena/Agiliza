@@ -3792,6 +3792,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Main\views\product\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
