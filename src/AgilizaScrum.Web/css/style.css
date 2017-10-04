@@ -2826,7 +2826,7 @@ section.content {
     min-height: 50px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: relative;
-    margin: 0;
+    margin: 10px;
     padding: 5px;
 }
 
@@ -8048,4 +8048,5 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
+
 

@@ -18,42 +18,84 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 card">
-            <div class="header">
-                <h2 style="float:left;;margin:0">
-                    @L("ProductBacklog")
-                </h2>
-            </div>
-            <div class="body">
-                <div class="row">
-                    <div ng-repeat="userStory in vm.stories" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <div class="card-user">
-                            <h4>
-                                {{userStory.name}}
-                            </h4>
-                            <p>
-                                {{userStory.description}}
-                            </p>
-                        </div>
+        <div ng-repeat="(zone,list) in vm.models.dropzones">
+            <div style="margin-left:30px" ng-if="zone=='Product'" class="col-lg-7 col-md-7 col-sm-7 col-xs-7 card">
+                <div class="header">
+                    <h2 style="float:left;;margin:0">
+                        {{zone}}
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <div ng-include="'list.html'"></div>
+                        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.createStory()">
+                            @*ng-click="vm.openUserStoryModal()">*@
+                            +@L("UserStory")
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.openUserStoryModal()">
-                        +@L("UserStory")
-                    </button>
+                </div>
+            </div>
+            <div style="float:right;margin-right:30px" ng-if="zone=='Release'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 card">
+                <div class="header">
+                    <h2 style="float:left;;margin:0">
+                        {{zone}}
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <div ng-include="'list.html'"></div>
+                        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.createStory()">
+                            @*ng-click="vm.openUserStoryModal()">*@
+                            +@L("Ship!")
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="float:right" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 card">
-            <div class="header">
-                <h2 style="float:left;;margin:0">
-                    @L("ReleaseBacklog")
-                </h2>
-            </div>
-            <div class="body">
-                <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.save()">
-                    +@L("Ship")
-                </button>
-            </div>
-        </div>
     </div>
-    
 </div>
+
+<style>
+    .list-item{
+        display:inline-block;
+    }
+    .item{
+        margin: 5px;
+    }
+    .item-product{
+        width:50%;
+    }
+</style>
+
+<script type="text/ng-template" id="list.html">
+    <ul style="padding:0" dnd-list="list">
+        <li ng-class="zone=='Product' ? 'item-product' : 'item-release'" class="list-item" ng-repeat="item in list"
+            dnd-draggable="item"
+            dnd-effect-allowed="move"
+            dnd-moved="list.splice($index, 1)"
+            dnd-selected="models.selected = item"
+            ng-class="{selected: models.selected === item}"
+            ng-include="'item.html'">
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="container.html">
+    <div class="container-element box box-blue">
+        <h3>Container {{item.id}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="item.html">
+    <div ng-click="vm.openStoryModal(item)" class="card-user">
+        <h4>
+            {{item.name}}
+        </h4>
+        <p>
+            {{item.description}}
+        </p>
+    </div>
+    @*<div class="item card-user">Item {{item.name}}</div>*@
+</script>

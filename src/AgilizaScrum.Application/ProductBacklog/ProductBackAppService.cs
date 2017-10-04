@@ -21,7 +21,7 @@ namespace AgilizaScrum.ProductBacklog
             _storyRepository = storyRepository;
         }
 
-        #region CRUD ProductBacklog
+        #region CRUDProductBacklog
         public List<ProductBackDto> GetAll()
         {
             var products = _prodRepository.GetAll().ToList();
@@ -47,10 +47,10 @@ namespace AgilizaScrum.ProductBacklog
 
         #endregion
 
-        #region User Story
-        public List<UserStoryDto> GetAllStories(int id)
+        #region UserStory
+        public List<UserStoryDto> GetStories(int id)
         {
-            var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id). ToList();
+            var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id).ToList();
             return Mapper.Map<List<UserStoryDto>>(stories);
         }
 
@@ -65,10 +65,17 @@ namespace AgilizaScrum.ProductBacklog
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Creating a task for input: " + input);
 
-            var story = new UserStory { Name = input.Name, Description = input.Description };
-
-            //Saving entity with standard Insert method of repositories.
+            var story = new UserStory { Name = input.Name, Description = input.Description , ProductBackId = input.ProductBackId };
+           
             _storyRepository.Insert(story);
+        }
+
+        public void UpdateStory(UserStoryDto input)
+        {
+            var story = _storyRepository.Get(input.Id);
+
+            story.Name = input.Name;
+            story.Description = input.Description;
         }
 
         #endregion

@@ -7,7 +7,22 @@
             getProduct();
             getStories();
 
-            vm.userStories = [{ name: "asdaw", description: "WDADWADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }];
+            vm.toRelease = [{ name: "asdaw", description: "WDADWADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }];
+
+            vm.models = {
+                selected: null,
+                templates: [
+                    { type: "item", id: 2 },
+                    { type: "container", id: 1, columns: [[], []] }
+                ],
+                dropzones: {
+                    "Product": vm.stories,
+                    "Release": vm.toRelease
+
+                }
+
+            };
+
 
             function getProduct() {
                 productService.get($stateParams.id).then(function (result) {
@@ -16,21 +31,32 @@
             }
 
             function getStories() {
-                productService.getAllStories($stateParams.id).then(function (result) {
+                productService.getStories($stateParams.id).then(function (result) {
                     vm.stories = result.data;
+                    vm.models.dropzones.Product = vm.stories;
                 });
             }
 
             vm.createStory = function () {
-                
-                productService.createStory()
+                var story = { name: "Story", description: "Description", productBackId : $stateParams.id}
+                productService.createStory(story)
+                    .then(function () {
+                        abp.notify.info(App.localize('SavedSuccessfully'));
+                        getStories();
+                        
+                    });
             };
 
-            vm.openUserStoryModal = function () {
+            vm.openStoryModal = function (story) {
                 var modalInstance = $uibModal.open({
-                    templateUrl: '/App/Main/views/products/createModal.cshtml',
-                    controller: 'app.views.products.createModal as vm',
-                    backdrop: 'static'
+                    templateUrl: '/App/Main/views/products/userStory/editStoryModal.cshtml',
+                    controller: 'app.views.products.editStoryModal as vm',
+                    backdrop: 'static',
+                    resolve: {
+                        id: function () {
+                            return story.id;
+                        }
+                    }
                 });
 
                 modalInstance.rendered.then(function () {
@@ -38,7 +64,7 @@
                 });
 
                 modalInstance.result.then(function () {
-                    getProducts();
+                    getStories();
                 });
             };
 

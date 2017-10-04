@@ -9,7 +9,7 @@
             getProducts();
 
             function getProducts() {
-                productService.getAll({}).then(function (result) {
+                productService.getAll().then(function (result) {
                     vm.products = result.data;
                 });
             }

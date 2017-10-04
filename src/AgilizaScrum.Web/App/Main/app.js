@@ -9,7 +9,8 @@
         'ui.bootstrap',
         'ui.jq',
 
-        'abp'
+        'abp',
+        'dndLists'
     ]);
 
     //Configuration for Angular UI routing.

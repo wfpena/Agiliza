@@ -201,6 +201,7 @@
   <ItemGroup>
     <Compile Include="EntityFramework\AgilizaScrumDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\AgilizaScrumRepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repositories\UserStoryRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ReleaseBackRepository.cs" />
     <Compile Include="EntityFramework\Repositories\SprintRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductBackRepository.cs" />
