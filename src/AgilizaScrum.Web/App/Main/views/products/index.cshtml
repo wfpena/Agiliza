@@ -1,11 +1,11 @@
 ﻿<div class="row clearfix" ng-controller="app.views.products.index as vm">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card main-content">
-            <div class="header">
-                <h2>
+        @*<div class="card main-content">*@
+            <div style="padding:10px" class="card header">
+                <h2 style="float:left;;margin:0">
                     @L("ProductBacklog")
                 </h2>
-                <ul class="header-dropdown m-r--5">
+                <ul style="list-style:none;float:right;margin:0" class="header-dropdown m-r--5">
                     <i class="fa fa-spin fa-spinner" ng-if="vm.isTableLoading"></i>
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -19,13 +19,19 @@
             </div>
 
             <div class="row">
-                <div ng-repeat="product in vm.products" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 card">
-                    <h4>
-                        {{product.name}}
-                    </h4>
-                    <p>
-                        {{product.description}}
-                    </p>
+                <div ng-repeat="product in vm.products" class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ui-sref="productEdit({id: product.id})">
+                    <div style="padding:5px">
+                        <div class="card-product">
+                            <h4>
+                                {{product.name}}
+                            </h4>
+                            <p>
+                                {{product.description}}
+                            </p>
+                        </div>
+                            
+                    </div>
+                       
                 </div>
             </div>
 
@@ -66,6 +72,6 @@
                     <i class="material-icons">add</i>
                 </button>
             </div>
-        </div>
+        @*</div>*@
     </div>
 </div>

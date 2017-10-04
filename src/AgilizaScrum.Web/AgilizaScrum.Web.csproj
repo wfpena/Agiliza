@@ -466,7 +466,8 @@
     <Content Include="App\Main\views\layout\sidebar-user-area.js" />
     <Content Include="App\Main\views\layout\topbar.js" />
     <Content Include="App\Main\views\products\createModal.js" />
-    <Content Include="App\Main\views\products\editModal.js" />
+    <Content Include="App\Main\views\products\editProduct.js" />
+    <Content Include="App\Main\views\products\userStory\createStoryModal.js" />
     <Content Include="App\Main\views\products\index.js" />
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
@@ -2869,8 +2870,9 @@
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
     <Content Include="App\Main\views\products\createModal.cshtml" />
-    <Content Include="App\Main\views\products\editModal.cshtml" />
+    <Content Include="App\Main\views\products\editProduct.cshtml" />
     <Content Include="App\Main\views\products\index.cshtml" />
+    <Content Include="App\Main\views\products\userStory\createStoryModal.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

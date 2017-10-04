@@ -11,6 +11,9 @@ namespace AgilizaScrum.ProductBacklog
     public interface IProductBackAppService : IApplicationService
     {
         List<ProductBackDto> GetAll();
+        ProductBackDto Get(int id);
         void CreateProduct(ProductBackDto input);
+
+        UserStoryDto GetUserStory(int id);
     }
 }

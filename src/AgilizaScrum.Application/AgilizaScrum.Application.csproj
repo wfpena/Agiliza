@@ -206,6 +206,7 @@
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\TenantAppService.cs" />
     <Compile Include="ProductBacklog\Dtos\ProductBackDto.cs" />
+    <Compile Include="ProductBacklog\Dtos\UserStoryDto.cs" />
     <Compile Include="ProductBacklog\IProductBackAppService.cs" />
     <Compile Include="ProductBacklog\ProductBackAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

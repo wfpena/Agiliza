@@ -1,5 +1,6 @@
 ﻿using AgilizaScrum.ProductBacklog;
 using AgilizaScrum.ProductBacklog.Dtos;
+using AgilizaScrum.UserStories;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace AgilizaScrum
         {
             mapper.CreateMap<ProductBackDto, ProductBack>();
             mapper.CreateMap<ProductBack, ProductBackDto>();
+
+            mapper.CreateMap<UserStory, UserStoryDto>();
         }
     }
 }

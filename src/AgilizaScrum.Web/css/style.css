@@ -2812,6 +2812,29 @@ section.content {
     padding: 5px 0 0 8px !important; }
 
 /* Card ======================================== */
+.card-product {
+    background: #fff;
+    min-height: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0;
+    padding:5px;
+}
+
+.card-user {
+    background: #fff;
+    min-height: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0;
+    padding: 5px;
+}
+
+.card-product:hover{
+    cursor:pointer;
+    background-color:lightgrey;
+}
+
 .card {
   background: #fff;
   min-height: 50px;

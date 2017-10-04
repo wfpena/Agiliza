@@ -61,6 +61,12 @@
                     templateUrl: '/App/Main/views/products/index.cshtml',
                     menu: 'Products' //Matches to name of 'ProductBacklog' menu in AgilizaScrumNavigationProvider
                 })
+                .state('productEdit', {
+                    url: '/productEdit/:id',
+                    templateUrl: '/App/Main/views/products/editProduct.cshtml',
+                    controller: 'app.views.products.editProduct',
+                    controllerAs: 'vm'
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
