@@ -20,12 +20,15 @@ namespace AgilizaScrum.UserStories
         public virtual DateTime CreationTime { get; set; }
         public virtual eState State { get; set; }
 
-        public virtual ReleaseBack ReleaseBacklog { get; set; }
         public virtual Sprint Sprint { get; set; }
 
         public virtual ProductBack ParentProductBack { get; set; }
         [ForeignKey("ParentProductBack")]
         public virtual int ProductBackId { get; set; }
+
+        public virtual ReleaseBack ParentReleaseBack { get; set; }
+        [ForeignKey("ParentReleaseBack")]
+        public virtual int? ReleaseBackId { get; set; }
 
         public UserStory()
         {

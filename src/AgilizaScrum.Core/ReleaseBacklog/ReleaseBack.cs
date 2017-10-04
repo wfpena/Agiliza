@@ -2,6 +2,7 @@
 using Abp.Domain.Entities.Auditing;
 using AgilizaScrum.ProductBacklog;
 using AgilizaScrum.SprintBacklog;
+using AgilizaScrum.UserStories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,7 @@ namespace AgilizaScrum.ReleaseBacklog
         [ForeignKey("ParentProductBack")]
         public virtual int ProductBackId { get; set; }
 
+        public virtual ICollection<UserStory> UserStories { get; set; }
         public virtual ICollection<Sprint> Sprints { get; set; }
 
         public ReleaseBack()

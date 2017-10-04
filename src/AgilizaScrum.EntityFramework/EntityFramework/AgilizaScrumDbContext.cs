@@ -67,6 +67,11 @@ namespace AgilizaScrum.EntityFramework
                    .HasRequired(i => i.ParentReleaseBack)
                    .WithMany(i => i.Sprints)
                    .HasForeignKey(i => i.ReleaseBackId);
+
+            //modelBuilder.Entity<Sprint>()
+            //       .HasRequired(i => i.ParentReleaseBack)
+            //       .WithMany(i => i.Sprints)
+            //       .HasForeignKey(i => i.ReleaseBackId);
         }
     }
 }

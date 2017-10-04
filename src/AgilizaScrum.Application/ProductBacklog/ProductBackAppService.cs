@@ -78,6 +78,11 @@ namespace AgilizaScrum.ProductBacklog
             story.Description = input.Description;
         }
 
+        public void DeleteStory(int id)
+        {
+            _storyRepository.Delete(id);
+        }
+
         #endregion
     }
 }

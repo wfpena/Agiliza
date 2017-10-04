@@ -68,8 +68,19 @@
                 });
             };
 
-            vm.cancel = function () {
-                //$uibModalInstance.dismiss({});
+            vm.deleteStory = function (story) {
+                abp.message.confirm(
+                    "Delete story '" + story.name + "'?",
+                    function (result) {
+                        if (result) {
+                            productService.deleteStory(story.id)
+                                .then(function () {
+                                    abp.notify.info(App.localize('DelteSuccessfully'));
+                                    getStories();
+                                });
+                        }
+                    });
+                
             };
         }
     ]);
