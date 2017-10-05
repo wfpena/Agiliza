@@ -67,10 +67,14 @@
                     templateUrl: '/App/Main/views/products/editProduct.cshtml',
                     cache: false
                 })
-                .state('release', {
-                    url: '/productEdit/:id',
+                .state('releases', {
+                    url: '/releases',
                     templateUrl: '/App/Main/views/release/index.cshtml',
                     menu: 'Release'
+                })
+                .state('releaseInfo', {
+                    url: '/releaseInfo/:id',
+                    templateUrl: '/App/Main/views/release/releaseInfo/releaseInfo.cshtml'
                 })
                 .state('about', {
                     url: '/about',

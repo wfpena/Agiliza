@@ -22,6 +22,12 @@ namespace AgilizaScrum.UserStories
             return Mapper.Map<List<UserStoryDto>>(stories);
         }
 
+        public List<UserStoryDto> GetStoriesRelease(int id)
+        {
+            var stories = _storyRepository.GetAll().Where(i => i.ReleaseBackId == id).ToList();
+            return Mapper.Map<List<UserStoryDto>>(stories);
+        }
+
         public List<UserStoryDto> GetCreatedStories(int id)
         {
             var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id && i.State == ProductBacklog.eState.Created).ToList();
@@ -59,13 +65,14 @@ namespace AgilizaScrum.UserStories
 
         #endregion
 
-        public void ReleasedState(List<UserStoryDto> input)
+        public void ReleasedState(List<UserStoryDto> input, int releaseId)
         {
             foreach(var story in input)
             {
                 var st = _storyRepository.Get(story.Id);
                 st.State = ProductBacklog.eState.Released;
-                st.ReleaseBackId = story.ReleaseBackId;
+                st.ReleaseBackId = releaseId;
+                _storyRepository.Update(st);
             }
         }
     }

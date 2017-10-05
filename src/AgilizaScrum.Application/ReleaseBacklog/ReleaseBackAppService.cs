@@ -35,7 +35,6 @@ namespace AgilizaScrum.ReleaseBacklog
 
             var product = new ReleaseBack { Name = input.Name, Description = input.Description, ProductBackId = input.ProductBackId };
 
-            //Saving entity with standard Insert method of repositories.
             return _releaseRepository.InsertAndGetId(product);
         }
 

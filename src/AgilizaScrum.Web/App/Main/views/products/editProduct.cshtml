@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div style="float:right;margin-right:30px" ng-if="zone=='Release'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 card">
+            <div style="float:right;margin-right:30px" ng-if="zone=='Release'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 card dropzone">
                 <div class="header">
                     <h2 style="float:left;margin:0">
                         {{zone}}
@@ -43,14 +43,14 @@
                     <label>Name:</label>
                     <input type="text" ng-model="vm.release.name" class="form-control">
                 </div>
-                <div class="body">
+                <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.releaseBacklog()">
+                    +@L("Ship!")
+                </button>
+                @*<div class="body">*@
                     <div class="row">
                         <div ng-include="'list.html'"></div>
-                        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.releaseBacklog()">
-                            +@L("Ship!")
-                        </button>
                     </div>
-                </div>
+                @*</div>*@
             </div>
         </div>
     </div>
@@ -67,6 +67,12 @@
         width: 50%;
         vertical-align: top;
     }
+    .item-release {
+        border: violet 1px solid;
+        width: 100%;
+        text-align: center;
+        vertical-align: top;
+    }
 
     .content-story {
         display: inline-block;
@@ -75,16 +81,38 @@
         overflow: hidden !important;
         text-overflow: ellipsis;
     }
+    .nestedDemo .dropzone ul[dnd-list]{
+        min-height:40px;
+    }
+    .nestedDemo .dropzone .dndPlaceholder {
+        background-color: #ddd;
+        display: block;
+        min-height: 42px;
+    }
+    .nestedDemo .dropzone .selected .item {
+        color: #3c763d;
+        background-color: #dff0d8;
+    }
+    .nestedDemo .dropzone .selected .box {
+        border-color: #d6e9c6;
+    }
+    .nestedDemo .dropzone li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        display: block;
+        padding: 0px;
+    }
 </style>
 
 <script type="text/ng-template" id="list.html">
-    <ul style="padding:0" dnd-list="list">
+    <ul style="padding:0;min-height:60px" dnd-list="list">
+        <li style="list-style:none;" ng-if="list.length == 0 && zone=='Release'">Drop Stories Here!</li>
         <li ng-class="zone=='Product' ? 'item-product' : 'item-release'" class="list-item" ng-repeat="item in list"
             dnd-draggable="item"
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
-            dnd-selected="models.selected = item"
-            ng-class="{selected: models.selected === item}"
+            dnd-selected="vm.models.selected = item"
+            ng-class="{selected: vm.models.selected === item}"
             @*ng-include="item.type + '.html'">*@
             ng-include="'item.html'">
         </li>
@@ -100,13 +128,13 @@
 </script>
 
 <script type="text/ng-template" id="item.html">
-    <div style="word-wrap: break-word;"  class="card-user">
-        <span style="cursor:pointer;float:right;color:red"><i ng-click="vm.deleteStory(item)" class="fa fa-times" aria-hidden="true"></i></span>
-        <span style="cursor:pointer;float:right;color:blue;margin-right:5px"><i ng-click="vm.openStoryModal(item)" class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+    <div style="word-wrap: break-word;"  ng-class="zone=='Product' ? 'card-user' : 'card-release'">
+        <span ng-if="zone=='Product'" style="cursor:pointer;float:right;color:red"><i ng-click="vm.deleteStory(item)" class="fa fa-times" aria-hidden="true"></i></span>
+        <span ng-if="zone=='Product'" style="cursor:pointer;float:right;color:blue;margin-right:5px"><i ng-click="vm.openStoryModal(item)" class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
         <h5>
             {{item.name}}
         </h5>
-        <p>
+        <p ng-if="zone=='Product'">
             <span class="content-story">{{item.description}}</span>
         </p>
     </div>

@@ -19,8 +19,7 @@
                 ],
                 dropzones: {
                     "Product" : [],
-                    "Release": [{"name":"Drop Here"}]
-                    
+                    "Release": []
                 }
 
             };
@@ -68,6 +67,9 @@
                     resolve: {
                         id: function () {
                             return story.id;
+                        },
+                        user: function () {
+                            return 0;
                         }
                     }
                 });
@@ -97,15 +99,17 @@
             };
 
             vm.releaseBacklog = function () {
+                if (vm.models.dropzones.Release)
                 abp.message.confirm(
                     "Release back '" + vm.release.name + "'?",
                     function (result) {
                         if (result) {
-                            vm.release.description = "dawdwa";
+                            vm.release.description = "Release Description";
                             releaseService.createRelease({ name: vm.release.name, description: vm.release.description, productBackId: $stateParams.id })
                                 .then(function (result) {
-                                    storyService.releasedState(vm.models.dropzones.Release)
+                                    storyService.releasedState(vm.models.dropzones.Release, result.data)
                                         .then(function () {
+                                            abp.notify.info(App.localize('CreatedRelease'));
                                             getStories();
                                         });
                                 });

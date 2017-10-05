@@ -1,11 +1,12 @@
 ﻿(function () {
     angular.module('app').controller('app.views.products.editStoryModal', [
-        '$scope', '$uibModalInstance', 'abp.services.app.userStory', 'id',
-        function ($scope, $uibModalInstance, storyService, id) {
+        '$scope', '$uibModalInstance', 'abp.services.app.userStory', 'id', 'user',
+        function ($scope, $uibModalInstance, storyService, id, user) {
             var vm = this;
 
             getStory();
-            
+            vm.user = user;
+
             function getStory() {
                 storyService.getUserStory(id).then(function (result) {
                     vm.story = result.data;
