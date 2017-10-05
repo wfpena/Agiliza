@@ -65,8 +65,7 @@
                 .state('productEdit', {
                     url: '/productEdit/:id',
                     templateUrl: '/App/Main/views/products/editProduct.cshtml',
-                    controller: 'app.views.products.editProduct',
-                    controllerAs: 'vm'
+                    cache: false
                 })
                 .state('release', {
                     url: '/productEdit/:id',

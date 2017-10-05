@@ -11,5 +11,6 @@ namespace AgilizaScrum.ReleaseBacklog.Dtos
     {
         public String Name { get; set; }
         public String Description { get; set; }
+        public int ProductBackId { get; set; }
     }
 }

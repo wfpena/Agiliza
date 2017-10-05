@@ -12,5 +12,6 @@ namespace AgilizaScrum.UserStories.Dtos
         public String Name { get; set; }
         public String Description { get; set; }
         public int ProductBackId { get; set; }
+        public int? ReleaseBackId { get; set; }
     }
 }

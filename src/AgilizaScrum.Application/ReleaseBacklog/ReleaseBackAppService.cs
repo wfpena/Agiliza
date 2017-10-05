@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace AgilizaScrum.ReleaseBacklog
 {
-    public class ProductBackAppService : ApplicationService , IReleaseBackAppService
+    public class ReleaseBackAppService : ApplicationService , IReleaseBackAppService
     {
         private readonly IReleaseBackRepository _releaseRepository;
 
-        public ProductBackAppService(IReleaseBackRepository releaseRepository)
+        public ReleaseBackAppService(IReleaseBackRepository releaseRepository)
         {
             _releaseRepository = releaseRepository;
         }
@@ -33,7 +33,7 @@ namespace AgilizaScrum.ReleaseBacklog
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Creating a task for input: " + input);
 
-            var product = new ReleaseBack { Name = input.Name, Description = input.Description };
+            var product = new ReleaseBack { Name = input.Name, Description = input.Description, ProductBackId = input.ProductBackId };
 
             //Saving entity with standard Insert method of repositories.
             return _releaseRepository.InsertAndGetId(product);

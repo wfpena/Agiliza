@@ -1,4 +1,4 @@
-﻿<div class="row clearfix">
+﻿<div class="row clearfix" ng-controller="app.views.products.edit as vm"> 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div style="padding:10px" class="card header">
             <h2 style="float:left;;margin:0">
@@ -84,8 +84,8 @@
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
             dnd-selected="models.selected = item"
-            dnd-invade-mode="true"
             ng-class="{selected: models.selected === item}"
+            @*ng-include="item.type + '.html'">*@
             ng-include="'item.html'">
         </li>
     </ul>
@@ -110,5 +110,9 @@
             <span class="content-story">{{item.description}}</span>
         </p>
     </div>
-    @*<div class="item card-user">Item {{item.name}}</div>*@
 </script>
+
+@*<script type="text/ng-template" id="item.html">
+    <div class="item">Item {{item.id}}</div>
+</script>*@
+

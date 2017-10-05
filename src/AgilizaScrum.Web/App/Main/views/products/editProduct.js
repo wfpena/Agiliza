@@ -1,11 +1,15 @@
 ﻿(function () {
-    angular.module('app').controller('app.views.products.editProduct', [
+    angular.module('app').controller('app.views.products.edit', [
         '$scope', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.userStory', 'abp.services.app.releaseBack','$stateParams',
         function ($scope, $uibModal, productService, storyService, releaseService, $stateParams) {
             var vm = this;
 
             getProduct();
             getStories();
+
+            vm.releaseStories = [];
+            vm.release = [];
+            vm.release.name = "Release Name";
             
             vm.models = {
                 selected: null,
@@ -14,8 +18,9 @@
                     { type: "container", id: 1, columns: [[], []] }
                 ],
                 dropzones: {
-                    "Product": vm.stories,
-                    "Release": vm.stories
+                    "Product" : [],
+                    "Release": [{"name":"Drop Here"}]
+                    
                 }
 
             };
@@ -31,7 +36,17 @@
                 storyService.getCreatedStories($stateParams.id).then(function (result) {
                     vm.stories = result.data;
                     vm.models.dropzones.Product = vm.stories;
-                    vm.models.dropzones.Release = vm.stories;
+                    //var aux = 0;
+                    ////console.log(vm.models.dropzones.A[0].columns[0]);
+                    //angular.forEach(vm.stories, function (data) {
+                    //    if (aux === 0) {
+                    //        vm.models.dropzones.Product1.push(data);
+                    //        aux = 1;
+                    //    } else {
+                    //        vm.models.dropzones.Product2.push(data);
+                    //        aux = 0;
+                    //    }
+                    //});
                 });
             }
 
@@ -86,9 +101,10 @@
                     "Release back '" + vm.release.name + "'?",
                     function (result) {
                         if (result) {
-                            releaseService.createRelease(vm.release)
+                            vm.release.description = "dawdwa";
+                            releaseService.createRelease({ name: vm.release.name, description: vm.release.description, productBackId: $stateParams.id })
                                 .then(function (result) {
-                                    storyService.releasedState(vm.toRelease)
+                                    storyService.releasedState(vm.models.dropzones.Release)
                                         .then(function () {
                                             getStories();
                                         });
@@ -100,7 +116,7 @@
             };
 
             vm.refresh = function () {
-                initialize();
+               // initialize();
             };
         }
     ]);

@@ -65,6 +65,7 @@ namespace AgilizaScrum.UserStories
             {
                 var st = _storyRepository.Get(story.Id);
                 st.State = ProductBacklog.eState.Released;
+                st.ReleaseBackId = story.ReleaseBackId;
             }
         }
     }
