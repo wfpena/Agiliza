@@ -469,6 +469,9 @@
     <Content Include="App\Main\views\products\editProduct.js" />
     <Content Include="App\Main\views\products\userStory\editStoryModal.js" />
     <Content Include="App\Main\views\products\index.js" />
+    <Content Include="App\Main\views\release\createModal.js" />
+    <Content Include="App\Main\views\release\editProduct.js" />
+    <Content Include="App\Main\views\release\index.js" />
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
     <Content Include="App\Main\views\roles\index.js" />
@@ -2874,6 +2877,9 @@
     <Content Include="App\Main\views\products\editProduct.cshtml" />
     <Content Include="App\Main\views\products\index.cshtml" />
     <Content Include="App\Main\views\products\userStory\editStoryModal.cshtml" />
+    <Content Include="App\Main\views\release\createModal.cshtml" />
+    <Content Include="App\Main\views\release\editProduct.cshtml" />
+    <Content Include="App\Main\views\release\index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

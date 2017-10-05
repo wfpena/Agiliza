@@ -11,7 +11,7 @@
                         <i class="material-icons">more_vert</i>
                     </a>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block()" ng-click="vm.refresh();"><i class="material-icons">refresh</i> @L("Refresh")</a></li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block()" ng-click="vm.refresh()"><i class="material-icons">refresh</i> @L("Refresh")</a></li>
                     </ul>
                 </li>
             </ul>
@@ -21,7 +21,7 @@
         <div ng-repeat="(zone,list) in vm.models.dropzones">
             <div style="margin-left:30px" ng-if="zone=='Product'" class="col-lg-7 col-md-7 col-sm-7 col-xs-7 card">
                 <div class="header">
-                    <h2 style="float:left;;margin:0">
+                    <h2 style="float:left;margin:0">
                         {{zone}}
                     </h2>
                 </div>
@@ -29,7 +29,6 @@
                     <div class="row">
                         <div ng-include="'list.html'"></div>
                         <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.createStory()">
-                            @*ng-click="vm.openUserStoryModal()">*@
                             +@L("UserStory")
                         </button>
                     </div>
@@ -37,15 +36,17 @@
             </div>
             <div style="float:right;margin-right:30px" ng-if="zone=='Release'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 card">
                 <div class="header">
-                    <h2 style="float:left;;margin:0">
+                    <h2 style="float:left;margin:0">
                         {{zone}}
                     </h2>
+                    <br>
+                    <label>Name:</label>
+                    <input type="text" ng-model="vm.release.name" class="form-control">
                 </div>
                 <div class="body">
                     <div class="row">
                         <div ng-include="'list.html'"></div>
-                        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.createStory()">
-                            @*ng-click="vm.openUserStoryModal()">*@
+                        <button type="submit" class="btn btn-primary waves-effect" ng-click="vm.releaseBacklog()">
                             +@L("Ship!")
                         </button>
                     </div>
@@ -83,6 +84,7 @@
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
             dnd-selected="models.selected = item"
+            dnd-invade-mode="true"
             ng-class="{selected: models.selected === item}"
             ng-include="'item.html'">
         </li>

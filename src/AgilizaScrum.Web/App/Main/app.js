@@ -68,6 +68,11 @@
                     controller: 'app.views.products.editProduct',
                     controllerAs: 'vm'
                 })
+                .state('release', {
+                    url: '/productEdit/:id',
+                    templateUrl: '/App/Main/views/release/index.cshtml',
+                    menu: 'Release'
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',

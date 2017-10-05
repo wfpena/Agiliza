@@ -206,7 +206,10 @@
     <Compile Include="MultiTenancy\ITenantAppService.cs" />
     <Compile Include="MultiTenancy\TenantAppService.cs" />
     <Compile Include="ProductBacklog\Dtos\ProductBackDto.cs" />
-    <Compile Include="ProductBacklog\Dtos\UserStoryDto.cs" />
+    <Compile Include="ReleaseBacklog\Dtos\ReleaseBackDto.cs" />
+    <Compile Include="ReleaseBacklog\IReleaseBackAppService.cs" />
+    <Compile Include="ReleaseBacklog\ReleaseBackAppService.cs" />
+    <Compile Include="UserStories\Dtos\UserStoryDto.cs" />
     <Compile Include="ProductBacklog\IProductBackAppService.cs" />
     <Compile Include="ProductBacklog\ProductBackAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,6 +219,8 @@
     <Compile Include="Roles\IRoleAppService.cs" />
     <Compile Include="SprintBacklog\ISprintAppService.cs" />
     <Compile Include="SprintBacklog\SprintAppService.cs" />
+    <Compile Include="UserStories\IUserStoryAppService.cs" />
+    <Compile Include="UserStories\UserStoryAppService.cs" />
     <Compile Include="Users\Dto\CreateUserDto.cs" />
     <Compile Include="Users\Dto\UpdateUserDto.cs" />
     <Compile Include="Users\Dto\UserDto.cs" />

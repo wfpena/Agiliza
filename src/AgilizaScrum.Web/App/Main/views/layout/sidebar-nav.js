@@ -11,7 +11,8 @@
                 createMenuItem(App.localize("Tenants"), "Pages.Tenants", "business", "tenants"),
                 createMenuItem(App.localize("Users"), "Pages.Users", "people", "users"),
                 createMenuItem(App.localize("Roles"), "Pages.Roles", "local_offer", "roles"),
-                createMenuItem(App.localize("ProductBacklog"), "", "", "products"),
+                createMenuItem(App.localize("ProductBacklog"), "", "perm_media", "products"),
+                createMenuItem(App.localize("Release Backlog"), "", "", "release"),
                 createMenuItem(App.localize("About"), "", "info", "about"),
 
                 createMenuItem(App.localize("MultiLevelMenu"), "", "menu", "", [

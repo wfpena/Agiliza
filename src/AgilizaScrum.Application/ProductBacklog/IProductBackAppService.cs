@@ -13,12 +13,5 @@ namespace AgilizaScrum.ProductBacklog
         List<ProductBackDto> GetAll();
         ProductBackDto Get(int id);
         void CreateProduct(ProductBackDto input);
-
-        UserStoryDto GetUserStory(int id);
-        List<UserStoryDto> GetStories(int id);
-        void CreateStory(UserStoryDto input);
-        void UpdateStory(UserStoryDto input);
-        void DeleteStory(int id);
-
     }
 }

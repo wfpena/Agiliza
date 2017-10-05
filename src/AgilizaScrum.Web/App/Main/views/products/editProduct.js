@@ -1,14 +1,12 @@
 ﻿(function () {
     angular.module('app').controller('app.views.products.editProduct', [
-        '$scope', '$uibModal', 'abp.services.app.productBack', '$stateParams',
-        function ($scope, $uibModal, productService, $stateParams) {
+        '$scope', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.userStory', 'abp.services.app.releaseBack','$stateParams',
+        function ($scope, $uibModal, productService, storyService, releaseService, $stateParams) {
             var vm = this;
 
             getProduct();
             getStories();
-
-            vm.toRelease = [{ name: "asdaw", description: "WDADWADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }, { name: "a22sdaw", description: "WDAD2222WADWA" }];
-
+            
             vm.models = {
                 selected: null,
                 templates: [
@@ -17,8 +15,7 @@
                 ],
                 dropzones: {
                     "Product": vm.stories,
-                    "Release": vm.toRelease
-
+                    "Release": vm.stories
                 }
 
             };
@@ -31,15 +28,16 @@
             }
 
             function getStories() {
-                productService.getStories($stateParams.id).then(function (result) {
+                storyService.getCreatedStories($stateParams.id).then(function (result) {
                     vm.stories = result.data;
                     vm.models.dropzones.Product = vm.stories;
+                    vm.models.dropzones.Release = vm.stories;
                 });
             }
 
             vm.createStory = function () {
                 var story = { name: "Story", description: "Description", productBackId : $stateParams.id}
-                productService.createStory(story)
+                storyService.createStory(story)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));
                         getStories();
@@ -69,18 +67,40 @@
             };
 
             vm.deleteStory = function (story) {
+                vm.toRelease = [];
                 abp.message.confirm(
                     "Delete story '" + story.name + "'?",
                     function (result) {
                         if (result) {
-                            productService.deleteStory(story.id)
+                            storyService.deleteStory(story.id)
                                 .then(function () {
                                     abp.notify.info(App.localize('DelteSuccessfully'));
                                     getStories();
                                 });
                         }
                     });
-                
+            };
+
+            vm.releaseBacklog = function () {
+                abp.message.confirm(
+                    "Release back '" + vm.release.name + "'?",
+                    function (result) {
+                        if (result) {
+                            releaseService.createRelease(vm.release)
+                                .then(function (result) {
+                                    storyService.releasedState(vm.toRelease)
+                                        .then(function () {
+                                            getStories();
+                                        });
+                                });
+                            
+                        }
+                    });
+
+            };
+
+            vm.refresh = function () {
+                initialize();
             };
         }
     ]);

@@ -33,7 +33,7 @@ namespace AgilizaScrum.UserStories
         public UserStory()
         {
             CreationTime = DateTime.Now;
-            State = eState.Active;
+            State = eState.Created;
 
         }
     }

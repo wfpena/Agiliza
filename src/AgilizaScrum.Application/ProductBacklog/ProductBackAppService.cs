@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using AgilizaScrum.ProductBacklog.Dtos;
 using AgilizaScrum.UserStories;
+using AgilizaScrum.UserStories.Dtos;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -43,44 +44,6 @@ namespace AgilizaScrum.ProductBacklog
 
             //Saving entity with standard Insert method of repositories.
             _prodRepository.Insert(product);
-        }
-
-        #endregion
-
-        #region UserStory
-        public List<UserStoryDto> GetStories(int id)
-        {
-            var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id).ToList();
-            return Mapper.Map<List<UserStoryDto>>(stories);
-        }
-
-        public UserStoryDto GetUserStory(int id)
-        {
-            var story = _storyRepository.Get(id);
-            return Mapper.Map<UserStoryDto>(story);
-        }
-
-        public void CreateStory(UserStoryDto input)
-        {
-            //We can use Logger, it's defined in ApplicationService class.
-            Logger.Info("Creating a task for input: " + input);
-
-            var story = new UserStory { Name = input.Name, Description = input.Description , ProductBackId = input.ProductBackId };
-           
-            _storyRepository.Insert(story);
-        }
-
-        public void UpdateStory(UserStoryDto input)
-        {
-            var story = _storyRepository.Get(input.Id);
-
-            story.Name = input.Name;
-            story.Description = input.Description;
-        }
-
-        public void DeleteStory(int id)
-        {
-            _storyRepository.Delete(id);
         }
 
         #endregion
