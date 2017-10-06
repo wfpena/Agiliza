@@ -35,17 +35,12 @@
                 storyService.getCreatedStories($stateParams.id).then(function (result) {
                     vm.stories = result.data;
                     vm.models.dropzones.Product = vm.stories;
-                    //var aux = 0;
-                    ////console.log(vm.models.dropzones.A[0].columns[0]);
-                    //angular.forEach(vm.stories, function (data) {
-                    //    if (aux === 0) {
-                    //        vm.models.dropzones.Product1.push(data);
-                    //        aux = 1;
-                    //    } else {
-                    //        vm.models.dropzones.Product2.push(data);
-                    //        aux = 0;
-                    //    }
-                    //});
+                    angular.forEach(vm.models.dropzones.Release, function (data) {
+                        var index = vm.models.dropzones.Product.indexOf(data);
+                        if (index > -1) {
+                            array.splice(index, 1);
+                        }
+                    });
                 });
             }
 

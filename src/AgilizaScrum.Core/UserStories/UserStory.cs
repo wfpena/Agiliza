@@ -1,14 +1,11 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using AgilizaScrum.enums;
 using AgilizaScrum.ProductBacklog;
 using AgilizaScrum.ReleaseBacklog;
 using AgilizaScrum.SprintBacklog;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AgilizaScrum.UserStories
 {
@@ -17,7 +14,7 @@ namespace AgilizaScrum.UserStories
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
         public virtual int OwnerPriority { get; set; }
-        public virtual int DeveloperPriority { get; set; }
+        public virtual ePriority DeveloperPriority { get; set; }
         public virtual DateTime CreationTime { get; set; }
         public virtual eState State { get; set; }
 

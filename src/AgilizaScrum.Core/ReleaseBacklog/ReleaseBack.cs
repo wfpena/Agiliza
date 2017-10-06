@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using AgilizaScrum.enums;
 using AgilizaScrum.ProductBacklog;
 using AgilizaScrum.SprintBacklog;
 using AgilizaScrum.UserStories;
@@ -16,7 +17,7 @@ namespace AgilizaScrum.ReleaseBacklog
     {
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
-        public virtual int Priority { get; set; }
+        public virtual ePriority Priority { get; set; }
         public virtual DateTime CreationTime { get; set; }
         public virtual eState State { get; set; }
 
