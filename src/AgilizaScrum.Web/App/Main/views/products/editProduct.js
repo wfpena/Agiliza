@@ -36,10 +36,9 @@
                     vm.stories = result.data;
                     vm.models.dropzones.Product = vm.stories;
                     angular.forEach(vm.models.dropzones.Release, function (data) {
-                        var index = vm.models.dropzones.Product.indexOf(data);
-                        if (index > -1) {
-                            array.splice(index, 1);
-                        }
+                        vm.models.dropzones.Product = vm.models.dropzones.Product.filter(function (obj) {
+                            return obj.id !== data.id;
+                        });
                     });
                 });
             }
@@ -105,6 +104,7 @@
                                     storyService.releasedState(vm.models.dropzones.Release, result.data)
                                         .then(function () {
                                             abp.notify.info(App.localize('CreatedRelease'));
+                                            vm.models.dropzones.Release = [];
                                             getStories();
                                         });
                                 });
