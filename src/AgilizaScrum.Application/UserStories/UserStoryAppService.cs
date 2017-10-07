@@ -24,7 +24,8 @@ namespace AgilizaScrum.UserStories
 
         public List<UserStoryDto> GetStoriesRelease(int id)
         {
-            var stories = _storyRepository.GetAll().Where(i => i.ReleaseBackId == id).ToList();
+            var stories = _storyRepository.GetAll().Where(i => i.ReleaseBackId == id).OrderBy(x => x.OwnerPriority).ToList();
+            //stories.OrderBy(x => x.OwnerPriority);
             return Mapper.Map<List<UserStoryDto>>(stories);
         }
 
