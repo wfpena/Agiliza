@@ -67,12 +67,15 @@ namespace AgilizaScrum.UserStories
 
         public void ReleasedState(List<UserStoryDto> input, int releaseId)
         {
+            int priority = 0;
             foreach(var story in input)
             {
                 var st = _storyRepository.Get(story.Id);
                 st.State = ProductBacklog.eState.Released;
+                st.OwnerPriority = priority;
                 st.ReleaseBackId = releaseId;
                 _storyRepository.Update(st);
+                priority++;
             }
         }
     }
