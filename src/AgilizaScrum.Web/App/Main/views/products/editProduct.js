@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('app').controller('app.views.products.edit', [
-        '$scope', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.userStory', 'abp.services.app.releaseBack','$stateParams',
-        function ($scope, $uibModal, productService, storyService, releaseService, $stateParams) {
+        '$scope', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.userStory', 'abp.services.app.releaseBack', '$stateParams', 'PagerService',
+        function ($scope, $uibModal, productService, storyService, releaseService, $stateParams, PagerService) {
             var vm = this;
 
             getProduct();
@@ -30,6 +30,36 @@
                 }
 
             };
+
+            //***********************************
+            vm.pager = {};
+            vm.pageSize = 5;
+            vm.setPage = setPage;
+
+            initController();
+
+            function initController() {
+                // initialize to page 1
+                getStories();
+                vm.setPage(1);
+            }
+
+            function setPage(page) {
+                if (page < 1 || page > vm.pager.totalPages) {
+                    return;
+                }
+                storyService.getCreatedStories($stateParams.id).then(function (result) {
+                    vm.stories = result.data;
+                    // get pager object from service
+                    vm.pager = PagerService.GetPager(vm.stories.length, page, vm.pageSize);
+
+                    // get current page of items
+                    vm.stories = vm.stories.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+                    vm.models.dropzones.Product = vm.stories;
+                });
+
+            }
+            //***********************************
 
 
             function getProduct() {
