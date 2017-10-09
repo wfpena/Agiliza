@@ -10,6 +10,13 @@
             vm.releaseStories = [];
             vm.release = [];
             vm.release.name = "Release Name";
+
+            vm.priorityRelease = [
+                { name: 'Urgent', id: 1 },
+                { name: 'High', id: 2 },
+                { name: 'Medium', id: 3 },
+                { name: 'Low', id: 4 },
+            ];
             
             vm.models = {
                 selected: null,
@@ -99,7 +106,7 @@
                     function (result) {
                         if (result) {
                             vm.release.description = "Release Description";
-                            releaseService.createRelease({ name: vm.release.name, description: vm.release.description, productBackId: $stateParams.id })
+                            releaseService.createRelease({ name: vm.release.name, description: vm.release.description, productBackId: $stateParams.id, priority: vm.priorityRelease.selected.id })
                                 .then(function (result) {
                                     storyService.releasedState(vm.models.dropzones.Release, result.data)
                                         .then(function () {

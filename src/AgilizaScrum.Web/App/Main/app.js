@@ -10,6 +10,7 @@
         'ui.jq',
 
         'abp',
+        'ui.select',
         'dndLists'
     ]);
 
