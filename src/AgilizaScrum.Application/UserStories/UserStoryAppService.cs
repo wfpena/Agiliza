@@ -31,7 +31,7 @@ namespace AgilizaScrum.UserStories
 
         public List<UserStoryDto> GetCreatedStories(int id)
         {
-            var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id && i.State == ProductBacklog.eState.Created).ToList();
+            var stories = _storyRepository.GetAll().Where(i => i.ProductBackId == id && i.State == ProductBacklog.eState.Created).OrderBy(x => x.Id).ToList();
             return Mapper.Map<List<UserStoryDto>>(stories);
         }
 

@@ -5,7 +5,7 @@
             var vm = this;
 
             getProduct();
-            getStories();
+            //getStories();
 
             vm.releaseStories = [];
             vm.release = [];
@@ -33,14 +33,14 @@
 
             //***********************************
             vm.pager = {};
-            vm.pageSize = 5;
+            vm.pageSize = 4;
             vm.setPage = setPage;
 
             initController();
 
             function initController() {
                 // initialize to page 1
-                getStories();
+                //getStories();
                 vm.setPage(1);
             }
 
@@ -56,6 +56,11 @@
                     // get current page of items
                     vm.stories = vm.stories.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
                     vm.models.dropzones.Product = vm.stories;
+                    angular.forEach(vm.models.dropzones.Release, function (data) {
+                        vm.models.dropzones.Product = vm.models.dropzones.Product.filter(function (obj) {
+                            return obj.id !== data.id;
+                        });
+                    });
                 });
 
             }
@@ -68,24 +73,24 @@
                 });
             }
 
-            function getStories() {
-                storyService.getCreatedStories($stateParams.id).then(function (result) {
-                    vm.stories = result.data;
-                    vm.models.dropzones.Product = vm.stories;
-                    angular.forEach(vm.models.dropzones.Release, function (data) {
-                        vm.models.dropzones.Product = vm.models.dropzones.Product.filter(function (obj) {
-                            return obj.id !== data.id;
-                        });
-                    });
-                });
-            }
+            //function getStories() {
+            //    storyService.getCreatedStories($stateParams.id).then(function (result) {
+            //        vm.stories = result.data;
+                    //vm.models.dropzones.Product = vm.stories;
+                    //angular.forEach(vm.models.dropzones.Release, function (data) {
+                    //    vm.models.dropzones.Product = vm.models.dropzones.Product.filter(function (obj) {
+                    //        return obj.id !== data.id;
+                    //    });
+                    //});
+            //    });
+            //}
 
             vm.createStory = function () {
                 var story = { name: "Story", description: "Description", productBackId : $stateParams.id}
                 storyService.createStory(story)
                     .then(function () {
                         abp.notify.info(App.localize('SavedSuccessfully'));
-                        getStories();
+                        setPage(1);
                         
                     });
             };
@@ -110,7 +115,7 @@
                 });
 
                 modalInstance.result.then(function () {
-                    getStories();
+                    setPage(1);
                 });
             };
 
@@ -123,7 +128,7 @@
                             storyService.deleteStory(story.id)
                                 .then(function () {
                                     abp.notify.info(App.localize('DelteSuccessfully'));
-                                    getStories();
+                                    setPage(1);
                                 });
                         }
                     });
@@ -142,7 +147,7 @@
                                         .then(function () {
                                             abp.notify.info(App.localize('CreatedRelease'));
                                             vm.models.dropzones.Release = [];
-                                            getStories();
+                                            setPage(1);
                                         });
                                 });
                             
