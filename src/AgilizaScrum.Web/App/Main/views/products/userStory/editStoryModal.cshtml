@@ -9,7 +9,7 @@
     </div>
     <div class="modal-body">
         <uib-tabset class="tab-container tabbable-line">
-            <uib-tab heading="Details">
+            <uib-tab heading="Owner">
                 <div class="row clearfix">
                     <div class="col-sm-6">
                         <div ng-if="vm.user==0" class="form-group form-float">
@@ -35,16 +35,19 @@
                     </div>
                 </div>
             </uib-tab>
-            @*<uib-tab heading="User Roles">
+            <uib-tab heading="Developers">
                 <div class="row">
                     <div class="col-sm-12 ">
-                        <div class="col-sm-6" ng-repeat="role in vm.roles">
-                            <input type="checkbox" name="role" value="{{role.name}}" title="{{role.description}}" class="filled-in" id="role-{{role.id}}" checked="checked" ng-model="role.isAssigned" />
-                            <label for="role-{{role.id}}" title="{{role.displayName}}">{{role.name}}</label>
-                        </div>
+                        <label class="form-label">@L("DeveloperPriority")</label>
+                        <ui-select ng-model="vm.priorityDevelopers.selected" theme="bootstrap" title="Choose a person">
+                            <ui-select-match placeholder="Select priority...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="priority in vm.priorityDevelopers | filter: $select.search">
+                                <div ng-bind-html="priority.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
-            </uib-tab>*@
+            </uib-tab>
         </uib-tabset>
     </div>
     <div class="modal-footer">

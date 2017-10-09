@@ -57,6 +57,11 @@ namespace AgilizaScrum.UserStories
 
             story.Name = input.Name;
             story.Description = input.Description;
+            if(input.DeveloperPriority != null)
+            {
+                story.DeveloperPriority = input.DeveloperPriority;
+            }
+                
         }
 
         public void DeleteStory(int id)

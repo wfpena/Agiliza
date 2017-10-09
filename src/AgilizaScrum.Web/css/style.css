@@ -2821,6 +2821,14 @@ section.content {
     padding:5px;
 }
 
+.color-red{
+    border-top:solid red 10px;
+}
+
+.color-neutral{
+    border-top:solid lightgray 10px;
+}
+
 .card-user {
     background: #fff;
     min-height: 120px;

@@ -63,6 +63,28 @@ namespace AgilizaScrum.Web
                         icon: "fa fa-tag"
                     //requiredPermissionName: PermissionNames.Pages_Roles
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        "Sprints",
+                        new LocalizableString("Sprints", AgilizaScrumConsts.LocalizationSourceName),
+                        icon: "fa fa-info"
+                        ).AddItem(
+                        new MenuItemDefinition(
+                            "SprintBacklog",
+                            new LocalizableString("UserManagement", "SimpleTaskSystem"),
+                            url: "#sprintbacklog",
+                            icon: "fa fa-users"
+                            //requiredPermissionName: "SimpleTaskSystem.Permissions.UserManagement"
+                            )
+                        ).AddItem(
+                            new MenuItemDefinition(
+                            "SprintPlanning",
+                            new LocalizableString("RoleManagement", "SimpleTaskSystem"),
+                            url: "#sprintplanning",
+                            icon: "fa fa-star"
+                            //requiredPermissionName: "SimpleTaskSystem.Permissions.RoleManagement"
+                            )
+                        )
                 )
                 .AddItem(
                     new MenuItemDefinition(

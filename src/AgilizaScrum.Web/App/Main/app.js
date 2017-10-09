@@ -77,6 +77,14 @@
                     url: '/releaseInfo/:id',
                     templateUrl: '/App/Main/views/release/releaseInfo/releaseInfo.cshtml'
                 })
+                .state('sprints', {
+                    url: '/sprints',
+                    templateUrl: '/App/Main/views/about/about.cshtml'
+                })
+                .state('sprintplanning', {
+                    url: '/sprintplanning',
+                    templateUrl: '/App/Main/views/about/about.cshtml'
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',

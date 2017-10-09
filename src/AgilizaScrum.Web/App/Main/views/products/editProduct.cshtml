@@ -44,9 +44,9 @@
                     <input type="text" ng-model="vm.release.name" class="form-control">
                     <label>Priority:</label>
                     <ui-select ng-model="vm.priorityRelease.selected" theme="bootstrap" title="Choose a person">
-                        <ui-select-match placeholder="Select a person...">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices repeat="person in vm.priorityRelease | filter: $select.search">
-                            <div ng-bind-html="person.name | highlight: $select.search"></div>
+                        <ui-select-match placeholder="Select a priority...">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="priority in vm.priorityRelease | filter: $select.search">
+                            <div ng-bind-html="priority.name | highlight: $select.search"></div>
                         </ui-select-choices>
                     </ui-select>
                 </div>
