@@ -18,41 +18,18 @@
                 </ul>
             </div>
 
-            <button type="button" data-toggle="modal" class="btn btn-primary" ng-click="vm.openProductCreationModal()">
+            @*<button type="button" data-toggle="modal" class="btn btn-primary" ng-click="vm.openProductCreationModal()">
                 @L("StartSprint")
-            </button>
-        <div class="card">
-            <div ng-repeat="release in vm.releases" style="text-align: center;" class="container">
+            </button>*@
+        <div style="text-align:center" class="card col-xs-4">
+            <div style="display:inline-block" ng-repeat="release in vm.releases">
                 <div ng-show="vm.current==$index" ng-click="vm.currentMain=$index">
-                    <i class="fa fa-area-chart numberCircle" aria-hidden="true"></i>
-                    <h1>{{release.name}}</h1>
+                    <h3>{{release.name}}</h3>
                 </div>
             </div>
-            <div style="float:right" ng-click="vm.rightClick()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-            <div style="float:left" ng-click="vm.leftClick()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+            <div style="float:right;clear:both" ng-click="vm.rightClick()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+            <div style="float:left;clear:both" ng-click="vm.leftClick()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
         </div>
-            <div class="row">
-                <div ng-repeat="release in vm.releases" class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ui-sref="releaseInfo({id: release.id})">
-                    <div style="padding:5px">
-                        <div class="card-product">
-                            <h4>
-                                {{release.name}}
-                            </h4>
-                            <p>
-                                {{release.description}}
-                            </p>
-                            <p>
-                                {{release.priority}}
-                            </p>
-                        </div>
-                            
-                    </div>
-                       
-                </div>
-            </div>
-            <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" ng-click="vm.openProductCreationModal()">
-                <i class="material-icons">add</i>
-            </button>
-        @*</div>*@
+           
     </div>
 </div>
