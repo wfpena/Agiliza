@@ -83,7 +83,11 @@
                 })
                 .state('sprintplanning', {
                     url: '/sprintplanning',
-                    templateUrl: '/App/Main/views/about/about.cshtml'
+                    templateUrl: '/App/Main/views/sprints/sprintplanning/index.cshtml'
+                })
+                .state('startsprint', {
+                    url: '/startsprint',
+                    templateUrl: '/App/Main/views/sprints/sprintplanning/startSprint.cshtml'
                 })
                 .state('about', {
                     url: '/about',
