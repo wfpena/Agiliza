@@ -18,7 +18,7 @@
                     vm.current = 0;
 
                 vm.currentRelease = vm.releases[vm.current];
-                storyService.getStories(vm.currentRelease.id).then(function (result) {
+                storyService.getStoriesRelease(vm.currentRelease.id).then(function (result) {
                     vm.stories = result.data;
                 });
             }
@@ -30,7 +30,7 @@
                     vm.current = vm.releases.length - 1;
 
                 vm.currentRelease = vm.releases[vm.current];
-                storyService.getStories(vm.currentRelease.id).then(function (result) {
+                storyService.getStoriesRelease(vm.currentRelease.id).then(function (result) {
                     vm.stories = result.data;
                 });
             }
@@ -40,8 +40,8 @@
                 releaseService.getAll().then(function (result) {
                     vm.releases = result.data;
                     vm.currentRelease = vm.releases[0];
-                    storyService.getStories(vm.currentRelease.id).then(function (result) {
-                        vm.stories = result.data;
+                    storyService.getStoriesRelease(vm.currentRelease.id).then(function (data) {
+                        vm.stories = data.data;
                     });
                 });
             }
