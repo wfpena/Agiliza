@@ -5,6 +5,7 @@
             var vm = this;
 
             vm.releases = [];
+            vm.storiesSprint = [];
 
             getReleases();
 

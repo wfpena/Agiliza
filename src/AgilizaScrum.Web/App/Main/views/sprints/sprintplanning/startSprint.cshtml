@@ -18,28 +18,49 @@
             </div>
 
         <div class="col-xs-5">
-            <div style="text-align:center" class="card col-xs-12">
+            <div style="text-align:center;padding:14px" class="card col-xs-12">
                 <div style="display:inline-block" ng-repeat="release in vm.releases">
                     <div ng-show="vm.current==$index" ng-click="vm.currentMain=$index">
-                        <h5>{{release.name}}</h5>
+                        <h5 style="margin:0">{{release.name}}</h5>
                     </div>
                 </div>
-                <div style="float:right;clear:both" ng-click="vm.rightClick()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                <div style="float:left;clear:both" ng-click="vm.leftClick()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                <div style="float:right;" ng-click="vm.rightClick()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                <div style="float:left;" ng-click="vm.leftClick()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
             </div>
             <div class="card col-xs-12">
                 <div ng-include="'list.html'"></div>
             </div>
         </div>
+        <div class="card col-xs-6">
+            <h3>Sprint</h3>
+            <div ng-include="'listSprint.html'"></div>
+        </div>
     </div>
 </div>
 
+<style>
+    
+</style>
+
 <script type="text/ng-template" id="list.html">
-    <ul style="padding:0" dnd-list="list">
-        <li class="list-item" ng-repeat="item in vm.stories"
+    <ul style="padding:0;list-style:none" dnd-list="vm.stories">
+        <li style="display:inline-block;width:50%" class="list-item" ng-repeat="item in vm.stories"
             dnd-draggable="item"
             dnd-effect-allowed="move"
-            dnd-moved="list.splice($index, 1)"
+            dnd-moved="vm.stories.splice($index, 1)"
+            dnd-selected="models.selected = item"
+            ng-class="{selected: models.selected === item}"
+            ng-include="'item.html'">
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="listSprint.html">
+    <ul style="padding:0;list-style:none" dnd-list="vm.storiesSprint">
+        <li style="display:inline-block;width:100%" class="list-item" ng-repeat="item in vm.storiesSprint"
+            dnd-draggable="item"
+            dnd-effect-allowed="move"
+            dnd-moved="vm.storiesSprint.splice($index, 1)"
             dnd-selected="models.selected = item"
             ng-class="{selected: models.selected === item}"
             ng-include="'item.html'">
