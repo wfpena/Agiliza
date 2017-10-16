@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('app').controller('app.views.sprints.sprintplanning.startSprint', [
-        '$scope', '$timeout', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.releaseBack',
-        function ($scope, $timeout, $uibModal, productService, releaseService) {
+        '$scope', '$timeout', '$uibModal', 'abp.services.app.productBack', 'abp.services.app.releaseBack', 'abp.services.app.userStory',
+        function ($scope, $timeout, $uibModal, productService, releaseService, storyService) {
             var vm = this;
 
             vm.releases = [];
@@ -16,22 +16,35 @@
                     vm.current = vm.current + 1;
                 else
                     vm.current = 0;
+
+                vm.currentRelease = vm.releases[vm.current];
+                storyService.getStories(vm.currentRelease.id).then(function (result) {
+                    vm.stories = result.data;
+                });
             }
 
             vm.leftClick = function () {
                 if (vm.current != 0)
                     vm.current = vm.current - 1;
                 else
-                    vm.current = vm.releases.length-1;
+                    vm.current = vm.releases.length - 1;
+
+                vm.currentRelease = vm.releases[vm.current];
+                storyService.getStories(vm.currentRelease.id).then(function (result) {
+                    vm.stories = result.data;
+                });
             }
 
 
             function getReleases() {
                 releaseService.getAll().then(function (result) {
                     vm.releases = result.data;
+                    vm.currentRelease = vm.releases[0];
+                    storyService.getStories(vm.currentRelease.id).then(function (result) {
+                        vm.stories = result.data;
+                    });
                 });
             }
-
             
         }
     ]);
