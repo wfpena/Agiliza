@@ -71,7 +71,7 @@ namespace AgilizaScrum.Web
                         ).AddItem(
                         new MenuItemDefinition(
                             "SprintBacklog",
-                            new LocalizableString("UserManagement", "SimpleTaskSystem"),
+                            new LocalizableString("SprintBacklog", AgilizaScrumConsts.LocalizationSourceName),
                             url: "#sprintbacklog",
                             icon: "fa fa-users"
                             //requiredPermissionName: "SimpleTaskSystem.Permissions.UserManagement"
@@ -79,7 +79,7 @@ namespace AgilizaScrum.Web
                         ).AddItem(
                             new MenuItemDefinition(
                             "SprintPlanning",
-                            new LocalizableString("RoleManagement", "SimpleTaskSystem"),
+                            new LocalizableString("SprintPlanning", AgilizaScrumConsts.LocalizationSourceName),
                             url: "#sprintplanning",
                             icon: "fa fa-star"
                             //requiredPermissionName: "SimpleTaskSystem.Permissions.RoleManagement"

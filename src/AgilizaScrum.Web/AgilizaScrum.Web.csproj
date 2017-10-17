@@ -476,6 +476,7 @@
     <Content Include="App\Main\views\roles\editModal.js" />
     <Content Include="App\Main\views\roles\createModal.js" />
     <Content Include="App\Main\views\roles\index.js" />
+    <Content Include="App\Main\views\sprints\sprintbacklog\sprintbacklog.js" />
     <Content Include="App\Main\views\sprints\sprintplanning\startSprint.js" />
     <Content Include="App\Main\views\sprints\sprintplanning\index.js" />
     <Content Include="App\Main\views\tenants\editModal.js" />
@@ -2888,6 +2889,7 @@
     <Content Include="App\Main\views\release\releaseInfo\releaseInfo.cshtml" />
     <Content Include="App\Main\views\sprints\sprintplanning\index.cshtml" />
     <Content Include="App\Main\views\sprints\sprintplanning\startSprint.cshtml" />
+    <Content Include="App\Main\views\sprints\sprintbacklog\sprintbacklog.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -3819,7 +3821,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Main\views\sprints\sprints\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

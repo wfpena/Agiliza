@@ -2,6 +2,8 @@
 using AgilizaScrum.ProductBacklog.Dtos;
 using AgilizaScrum.ReleaseBacklog;
 using AgilizaScrum.ReleaseBacklog.Dtos;
+using AgilizaScrum.SprintBacklog;
+using AgilizaScrum.SprintBacklog.Dtos;
 using AgilizaScrum.UserStories;
 using AgilizaScrum.UserStories.Dtos;
 using AutoMapper;
@@ -24,6 +26,9 @@ namespace AgilizaScrum
             mapper.CreateMap<ReleaseBack, ReleaseBackDto>();
 
             mapper.CreateMap<UserStory, UserStoryDto>();
+
+            mapper.CreateMap<Sprint, SprintDto>();
+            mapper.CreateMap<SprintDto, Sprint>();
         }
     }
 }

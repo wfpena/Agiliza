@@ -12,6 +12,7 @@ namespace AgilizaScrum.UserStories
         List<UserStoryDto> GetStoriesRelease(int id);
         List<UserStoryDto> GetCreatedStories(int id);
         void ReleasedState(List<UserStoryDto> input, int releaseId);
+        void SprintState(List<UserStoryDto> input, int sprintId);
         void CreateStory(UserStoryDto input);
         void UpdateStory(UserStoryDto input);
         void DeleteStory(int id);

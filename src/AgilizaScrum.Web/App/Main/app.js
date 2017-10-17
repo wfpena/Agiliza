@@ -52,34 +52,44 @@
                 $urlRouterProvider.otherwise('/tenants');
             }
 
+            if (abp.auth.hasPermission('Developer')) {
+                $stateProvider
+                    .state('releases', {
+                        url: '/releases',
+                        templateUrl: '/App/Main/views/release/index.cshtml',
+                        menu: 'Release'
+                    })
+                    .state('releaseInfo', {
+                        url: '/releaseInfo/:id',
+                        templateUrl: '/App/Main/views/release/releaseInfo/releaseInfo.cshtml'
+                    });
+                $urlRouterProvider.otherwise('/releases');
+            }
+
+            if (abp.auth.hasPermission('ProductOwner')) {
+                $stateProvider
+                    .state('products', {
+                        url: '/products',
+                        templateUrl: '/App/Main/views/products/index.cshtml',
+                        menu: 'Products' //Matches to name of 'ProductBacklog' menu in AgilizaScrumNavigationProvider
+                    })
+                    .state('productEdit', {
+                        url: '/productEdit/:id',
+                        templateUrl: '/App/Main/views/products/editProduct.cshtml',
+                        cache: false
+                    });
+                $urlRouterProvider.otherwise('/products');
+            }
+
             $stateProvider
                 .state('home', {
                     url: '/',
                     templateUrl: '/App/Main/views/home/home.cshtml',
                     menu: 'Home' //Matches to name of 'Home' menu in AgilizaScrumNavigationProvider
                 })
-                .state('products', {
-                    url: '/products',
-                    templateUrl: '/App/Main/views/products/index.cshtml',
-                    menu: 'Products' //Matches to name of 'ProductBacklog' menu in AgilizaScrumNavigationProvider
-                })
-                .state('productEdit', {
-                    url: '/productEdit/:id',
-                    templateUrl: '/App/Main/views/products/editProduct.cshtml',
-                    cache: false
-                })
-                .state('releases', {
-                    url: '/releases',
-                    templateUrl: '/App/Main/views/release/index.cshtml',
-                    menu: 'Release'
-                })
-                .state('releaseInfo', {
-                    url: '/releaseInfo/:id',
-                    templateUrl: '/App/Main/views/release/releaseInfo/releaseInfo.cshtml'
-                })
                 .state('sprints', {
                     url: '/sprints',
-                    templateUrl: '/App/Main/views/about/about.cshtml'
+                    templateUrl: '/App/Main/views/sprints/sprintbacklog/sprintbacklog.cshtml'
                 })
                 .state('sprintplanning', {
                     url: '/sprintplanning',

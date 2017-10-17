@@ -40,7 +40,7 @@ namespace AgilizaScrum.ProductBacklog
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Creating a task for input: " + input);
 
-            var product = new ProductBack { Name = input.Name, Description = input.Description };
+            var product = new ProductBack { Name = input.Name, Description = input.Description, TenantId = AbpSession.TenantId };
 
             //Saving entity with standard Insert method of repositories.
             _prodRepository.Insert(product);

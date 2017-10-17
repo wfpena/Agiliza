@@ -11,9 +11,9 @@
                 createMenuItem(App.localize("Tenants"), "Pages.Tenants", "business", "tenants"),
                 createMenuItem(App.localize("Users"), "Pages.Users", "people", "users"),
                 createMenuItem(App.localize("Roles"), "Pages.Roles", "local_offer", "roles"),
-                createMenuItem(App.localize("ProductBacklog"), "", "perm_media", "products"),
-                createMenuItem(App.localize("Release Backlog"), "", "", "releases"),
-                createMenuItem(App.localize("Sprints"), "", "menu", "", [
+                createMenuItem(App.localize("ProductBacklog"), "ProductOwner", "library_books", "products"),
+                createMenuItem(App.localize("Release Backlog"), "Developer", "assignment_return", "releases"),
+                createMenuItem(App.localize("Sprints"), "", "list", "", [
                     createMenuItem("Sprint Backlog", "", "", "sprints"),
                     createMenuItem("Sprint Planning", "", "", "sprintplanning"),
                     ]),

@@ -209,6 +209,7 @@
     <Compile Include="ReleaseBacklog\Dtos\ReleaseBackDto.cs" />
     <Compile Include="ReleaseBacklog\IReleaseBackAppService.cs" />
     <Compile Include="ReleaseBacklog\ReleaseBackAppService.cs" />
+    <Compile Include="SprintBacklog\Dtos\SprintDto.cs" />
     <Compile Include="UserStories\Dtos\UserStoryDto.cs" />
     <Compile Include="ProductBacklog\IProductBackAppService.cs" />
     <Compile Include="ProductBacklog\ProductBackAppService.cs" />
@@ -245,9 +246,7 @@
       <Name>AgilizaScrum.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SprintBacklog\Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

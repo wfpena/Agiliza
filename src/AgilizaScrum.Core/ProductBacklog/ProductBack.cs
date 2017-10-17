@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AgilizaScrum.ProductBacklog
 {
-    public class ProductBack : Entity , IHasCreationTime
+    public class ProductBack : Entity , IHasCreationTime, IMayHaveTenant
     {
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
@@ -21,6 +21,8 @@ namespace AgilizaScrum.ProductBacklog
         public virtual ICollection<UserStory> UserStories { get; set; }
 
         public virtual ICollection<ReleaseBack> Releases { get; set; }
+
+        public int? TenantId { get; set; }
 
         public ProductBack()
         {

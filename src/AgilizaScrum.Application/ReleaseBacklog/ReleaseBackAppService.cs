@@ -33,7 +33,7 @@ namespace AgilizaScrum.ReleaseBacklog
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Creating a task for input: " + input);
 
-            var product = new ReleaseBack { Name = input.Name, Description = input.Description, ProductBackId = input.ProductBackId, Priority = input.Priority };
+            var product = new ReleaseBack { Name = input.Name, Description = input.Description, ProductBackId = input.ProductBackId, Priority = input.Priority , TenantId = AbpSession.TenantId };
 
             return _releaseRepository.InsertAndGetId(product);
         }

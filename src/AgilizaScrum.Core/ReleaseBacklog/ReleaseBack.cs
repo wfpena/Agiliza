@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AgilizaScrum.ReleaseBacklog
 {
-    public class ReleaseBack : Entity , IHasCreationTime
+    public class ReleaseBack : Entity , IHasCreationTime, IMayHaveTenant
     {
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
@@ -27,6 +27,7 @@ namespace AgilizaScrum.ReleaseBacklog
 
         public virtual ICollection<UserStory> UserStories { get; set; }
         public virtual ICollection<Sprint> Sprints { get; set; }
+        public int? TenantId { get; set; }
 
         public ReleaseBack()
         {

@@ -24,7 +24,7 @@ namespace AgilizaScrum.UserStories
 
         public List<UserStoryDto> GetStoriesRelease(int id)
         {
-            var stories = _storyRepository.GetAll().Where(i => i.ReleaseBackId == id).OrderBy(x => x.OwnerPriority).ToList();
+            var stories = _storyRepository.GetAll().Where(i => i.ReleaseBackId == id && i.State!=ProductBacklog.eState.Active).OrderBy(x => x.OwnerPriority).ToList();
             //stories.OrderBy(x => x.OwnerPriority);
             return Mapper.Map<List<UserStoryDto>>(stories);
         }
@@ -46,7 +46,7 @@ namespace AgilizaScrum.UserStories
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Creating a task for input: " + input);
 
-            var story = new UserStory { Name = input.Name, Description = input.Description , ProductBackId = input.ProductBackId };
+            var story = new UserStory { Name = input.Name, Description = input.Description , ProductBackId = input.ProductBackId , TenantId = AbpSession.TenantId };
            
             _storyRepository.Insert(story);
         }
@@ -57,10 +57,7 @@ namespace AgilizaScrum.UserStories
 
             story.Name = input.Name;
             story.Description = input.Description;
-            if(input.DeveloperPriority != null)
-            {
-                story.DeveloperPriority = input.DeveloperPriority;
-            }
+            story.DeveloperPriority = input.DeveloperPriority;
                 
         }
 
@@ -80,6 +77,19 @@ namespace AgilizaScrum.UserStories
                 st.State = ProductBacklog.eState.Released;
                 st.OwnerPriority = priority;
                 st.ReleaseBackId = releaseId;
+                _storyRepository.Update(st);
+                priority++;
+            }
+        }
+
+        public void SprintState(List<UserStoryDto> input, int sprintId)
+        {
+            int priority = 0;
+            foreach (var story in input)
+            {
+                var st = _storyRepository.Get(story.Id);
+                st.State = ProductBacklog.eState.Active;
+                st.SprintId = sprintId;
                 _storyRepository.Update(st);
                 priority++;
             }

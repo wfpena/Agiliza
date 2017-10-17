@@ -77,6 +77,10 @@
     <text name="Edit">Edit</text>
     <text name="Delete">Delete</text>
 
+    <text name="SprintPlanning">Sprint Planning</text>
+    <text name="ReleaseBacklog">Release Backlog</text>
+    <text name="Developer">Developer</text>
+
 
   </texts>
 </localizationDictionary>

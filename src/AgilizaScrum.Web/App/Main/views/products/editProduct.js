@@ -73,18 +73,6 @@
                 });
             }
 
-            //function getStories() {
-            //    storyService.getCreatedStories($stateParams.id).then(function (result) {
-            //        vm.stories = result.data;
-                    //vm.models.dropzones.Product = vm.stories;
-                    //angular.forEach(vm.models.dropzones.Release, function (data) {
-                    //    vm.models.dropzones.Product = vm.models.dropzones.Product.filter(function (obj) {
-                    //        return obj.id !== data.id;
-                    //    });
-                    //});
-            //    });
-            //}
-
             vm.createStory = function () {
                 var story = { name: "Story", description: "Description", productBackId : $stateParams.id}
                 storyService.createStory(story)
